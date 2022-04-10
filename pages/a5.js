@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
+import { getBigAssPieceOfData } from '../lib/posts'
 
 export async function getServerSideProps() {
-  const serverSideProps = { name: "ray", age: 21 }
+  const serverSideProps = await getBigAssPieceOfData()
   return {
     props: {
       serverSideProps
@@ -21,6 +22,11 @@ export default function A5(props) {
       <p>uses getServerSideProps</p>
       <div>
         server side rendered this big piece of data
+      </div>
+      <div>
+        {props.serverSideProps.map((item) => (
+          <div>{String(Object.entries(item))}</div>
+        ))}
       </div>
     </Layout>
   )

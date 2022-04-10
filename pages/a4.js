@@ -1,17 +1,16 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
-//import { getBigAssPieceOfData } from '../lib/posts'
+import { getBigAssPieceOfData } from '../lib/posts'
 
 
 export async function getStaticProps() {
-  const staticProps = {}
+  const staticProps = await getBigAssPieceOfData()
   return {
     props: {
       staticProps
     }, // will be passed to the page component as props
   }
 }
-
 
 export default function A4(props) {
   return (
@@ -23,6 +22,11 @@ export default function A4(props) {
       <p>uses getStaticProps to fetch something big</p>
       <div>
         static rendered this big piece of data 
+      </div>
+      <div>
+        {props.staticProps.map((item) => (
+          <div>{String(Object.entries(item))}</div>
+        ))}
       </div>
     </Layout>
   )
