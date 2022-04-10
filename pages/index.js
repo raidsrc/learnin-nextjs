@@ -29,17 +29,38 @@ export default function Home(props) {
         <ul className={utilStyles.list}>
           {props.allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-            <Link href={`/posts/${id}`}>
-              <a>{title}</a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>
-              <Date dateString={date} />
-            </small>
-          </li>
-          
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
+              <br />
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
+            </li>
+
           ))}
         </ul>
+        <h2>Other pages</h2>
+        <Link href={"/a1"}>
+          <a>A static HTML page</a>
+        </Link>
+        <br />
+        <Link href={"/a2"}>
+          <a>SSG page</a>
+        </Link>
+        <br />
+        <Link href={"/a3"}>
+          <a>SSR page</a>
+        </Link>
+        <br />
+        <Link href={"/a4"}>
+          <a>Big SSG page</a>
+        </Link>
+        <br />
+        <Link href={"/a5"}>
+          <a>Big SSR page</a>
+        </Link>
+        <br />
       </section>
     </Layout>
   )
